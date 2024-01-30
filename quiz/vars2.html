@@ -2,11 +2,13 @@
     <head>
         <script>
             // change the script such that i=0,1,2,3,4 is logged in the console
-            for (var i = 0; i < 5; i++) {
+            // issue was that the function was asynchronous and the loop was already finished
+            // Issue is resolved by creating a closure and passing the index as an argument
+            for (let i = 0; i < 5; i++) {
                 // setTimeout executes the function after 5 ms
-                setTimeout(function() {
-                    console.log(i);
-                }, 0);
+                setTimeout(function(idx) {
+                    console.log(idx);
+                }, 0, i);
             }
         </script>
     </head>
